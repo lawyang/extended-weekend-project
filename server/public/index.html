@@ -21,7 +21,13 @@
     <link rel="stylesheet" href="vendors/angular-material.css" />
     <title>In a World</title>
 </head>
-<body>
-    
+<body ng-app="movieApp">
+    <nav>
+        <ul>
+            <li> <a href="#!/">Home</a> </li>
+            <li> <a href="#!/genre">Genre</a> </li>
+        </ul>
+    </nav>
+    <ng-view></ng-view>
 </body>
 </html>
