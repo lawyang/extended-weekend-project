@@ -1,5 +1,5 @@
 const pg = require('pg');
-const pool = pg.Pool;
+const Pool = pg.Pool;
 
 const DBNAME = 'movie_collection';
 const config = {
