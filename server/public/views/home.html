@@ -1,8 +1,8 @@
-<p>{{vm.test}}</p>
+<p>{{vm.test}} "--if you see this controller is still connected" </p>
 <br>
-<br>
-<br>
-<h1>Add a Movie</h1>
+<md-content layout-gt-sm="row" layout-padding>
+    <h1>Add a Movie</h1>
+</md-content>
 <md-content layout-gt-sm="row" layout-padding>
     <div>
         <md-input-container>
@@ -22,7 +22,11 @@
         <md-datepicker md-placeholder="Release date" ng-model="vm.myDate"></md-datepicker>
     </md-input-container>
     <md-input-container>
-            <md-button md-no-ink class="md-raised md-primary">Submit</md-button>
+        <label>Youtube Movie Trailer</label>
+        <input md-placeholder="Video url" ng-model="vm.trailer">
+    </md-input-container>
+    <md-input-container>
+        <md-button md-no-ink class="md-raised md-primary">Submit</md-button>
     </md-input-container>
 </md-content>
 
@@ -30,18 +34,25 @@
 
 
 <div class="md-padding" layout="row" layout-wrap>
-        <md-card ng-repeat="movie in vm.displayArray">
-            <md-card-title>
-                <md-card-title-text>
-                    {{movie.title}}
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/sGbxmsDFVnE" frameborder="0" allowfullscreen></iframe>
-                <p>Genre: {{movie.genre}}</p>
-                <p>Release Date: {{movie.release_date}}</p>
-                <p>Runtime: {{movie.runtime}}</p>
-            </md-card-content>
+    <md-card ng-repeat="movie in vm.displayArray">
+        <md-card-title>
+            <md-card-title-text>
+                <span>
+                    <p>{{movie.title}}</p>
+                    <p>hello</p>
+                </span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <iframe width="560" height="315" ng-src="https://www.youtube.com/embed/{{movie.trailer}}" frameborder="0" allowfullscreen></iframe>
+            <p>Genre: {{movie.genre}}</p>
+            <p>Release Date: {{movie.release_date}}</p>
+            <p>Runtime: {{movie.runtime}}</p>
+            <md-button class="md-primary" ng-href="{{movie.trailer}}" target="_blank">View Trailer</md-button>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-button">X</md-button>
+        </md-card-actions>
 
-        </md-card>
+    </md-card>
 </div>

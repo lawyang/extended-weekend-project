@@ -25,5 +25,6 @@ movieApp.controller('HomeController', function (service) {
             });
     }
 
+
     vm.getAll();
 })
