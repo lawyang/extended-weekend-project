@@ -5,13 +5,7 @@ movieApp.controller('HomeController', function (service) {
     vm.service = service;
 
     vm.genre = [
-        {'name': 'Action'},
-        {'name': 'Horror'},
-        {'name': 'Comedy'},
-        {'name': 'Scifi'},
-        {'name': 'Kids'},
-        {'name': 'Animation'},
-        {'name': 'Romance'},
+        'this', 'two'
     ];
 
     vm.inputGenre = vm.genreOption;
@@ -25,6 +19,18 @@ movieApp.controller('HomeController', function (service) {
             });
     }
 
+    vm.submitButton = function(){
+        console.log(`in submit button`);
+        vm.sendToDb = {
+            title: vm.title,
+            release_date: vm.myDate,
 
+        }
+        
+    }
+
+    //GET GENRE
+    //display genre to add to movie
+    // DELETE ON CASCADE
     vm.getAll();
 })

@@ -11,3 +11,4 @@ movieApp.config(['$routeProvider', function($routeProvider) {
         template: '<h1>404</h1>'
     });
 }])
+
