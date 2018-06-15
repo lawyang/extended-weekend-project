@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <!--Angular sources-->
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
+    <!--Angular Material-->
     <script src="vendors/angular-material.min.js"></script>
     <script src="vendors/angular-messages.min.js"></script>
     <script src="vendors/angular-aria.min.js"></script>
@@ -21,13 +23,19 @@
     <link rel="stylesheet" href="vendors/angular-material.css" />
     <title>In a World</title>
 </head>
+
 <body ng-app="movieApp">
     <nav>
         <ul>
-            <li> <a href="#!/">Home</a> </li>
-            <li> <a href="#!/genre">Genre</a> </li>
+            <li>
+                <a href="#!/">Home</a>
+            </li>
+            <li>
+                <a href="#!/genre">Genre</a>
+            </li>
         </ul>
     </nav>
     <ng-view></ng-view>
 </body>
+
 </html>

@@ -8,6 +8,8 @@ app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+
+
 app.use('/collection', movieRouter);
 
 app.listen(PORT, () => {

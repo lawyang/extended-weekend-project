@@ -1,2 +1,25 @@
 <h1>Home --> HC</h1>
-<p>{{HC.test}}</p>
+<p>{{vm.test}}</p>
+<div>
+    <input type="text" placeholder="Title" ng-model="HC.title">
+</div>
+<br> Genre List:
+<select ng-model="vm.genreOption" ng-options="state as state.name for state in vm.genre"></select>
+Release Date:<md-datepicker ng-model="vm.myDate" md-placeholder="Release date"></md-datepicker>
+<md-button md-no-ink class="md-primary">Add Movie</md-button>
+
+<div ng-repeat="movie in vm.displayArray">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                {{movie.title}}
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p>{{movie.genre}}</p>
+            <p>{{movie.release_date}}</p>
+            <p>{{movie.runtime}}</p>
+        </md-card-content>
+
+    </md-card>
+</div>

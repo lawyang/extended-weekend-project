@@ -7,10 +7,10 @@ const pool = require('../pool/movie.pool');
 router.get('/', (req, res) => {
     console.log(`in GET request to DB from movie.router`);
     const queryText = "SELECT * FROM movies JOIN genres on movie_id = movies.id;"
-    pool.query( queryText )
-        .then( (result) => {
+    pool.query(queryText)
+        .then((result) => {
             console.log('back from the GET CALL with:', result.data);
-            res.send( result.rows );
+            res.send(result.rows);
         })
         .catch((error) => {
             console.log('ERROR handling GET call', error);
