@@ -21,7 +21,16 @@ router.get('/', (req, res) => {
 //POST to DB
 router.post('/', (req, res) => {
     let newMovie = req.body;
-    let queryPost = 'INSERT INTO movies (title, release_date, runtime, trailer) VALUES ($1, $2, $3, $4, $5)';
+    let queryPost = "INSERT INTO movies (title, release_date, runtime, trailer) VALUES ($1, $2, $3, $4)";
+    pool.query(queryPost, [newMovie.title, newMovie.release_date, newMovie.runtime, newMovie.trailer])
+        .then((result) => {
+            console.log('successful post to DB', result);
+            res.sendStatus(200)
+        })
+        .catch((error) =>{
+            console.log('Error posting to DB', error);
+            res.sendStatus(500)
+        })
 })
 
 

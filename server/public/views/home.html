@@ -9,9 +9,7 @@
         <label>Movie Title</label>
         <input ng-model="vm.title">
     </md-input-container>
-
-
-
+<!-- GENRES drop down -->
     <md-input-container>
         <label>Genre</label>
         <md-select ng-model="vm.genreToSend">
@@ -20,8 +18,11 @@
             </md-option>
         </md-select>
     </md-input-container>
-
-
+<!-- runtime -->
+<md-input-container>
+        <label>runtime mins</label>
+        <input ng-model="vm.time">
+    </md-input-container>
     <md-input-container>
         <md-datepicker md-placeholder="Release date" ng-model="vm.myDate"></md-datepicker>
     </md-input-container>
@@ -51,7 +52,7 @@
             <!-- <iframe width="560" height="315" ng-src="{{movie.trailer}}" frameborder="0" allowfullscreen></iframe> -->
             <p>Genre: {{movie.genre}}</p>
             <p>Release Date: {{movie.release_date}}</p>
-            <p>Runtime: {{movie.runtime}}</p>
+            <p>Runtime: {{movie.runtime}} mins</p>
             <p>{{movie.trailer}}</p>
             <md-button class="md-primary" ng-href="{{movie.trailer}}" target="_blank">View Trailer</md-button>
 

@@ -24,9 +24,12 @@ movieApp.controller('HomeController', function (service) {
         vm.sendToDb = {
             title: vm.title,
             release_date: vm.myDate,
-
+            runtime: vm.time,
+            trailer: vm.trailer
         }
-        
+        console.log(vm.sendToDb);
+        service.objectToSend = vm.sendToDb;
+        service.addMovie()
     }
 
     //GET GENRE
