@@ -35,9 +35,11 @@ router.get('/genres', (req, res) => {
 
 //POST to DB
 router.post('/', (req, res) => {
+    console.log('in post router:', req.body);
+    
     let newMovie = req.body;
-    let queryPost = "INSERT INTO movies (title, release_date, runtime, trailer) VALUES ($1, $2, $3, $4)";
-    pool.query(queryPost, [newMovie.title, newMovie.release_date, newMovie.runtime, newMovie.trailer])
+    let queryPost = "INSERT INTO movies (title, release_date, runtime, trailer, genres_id) VALUES ($1, $2, $3, $4, $5)";
+    pool.query(queryPost, [newMovie.title, newMovie.release_date, newMovie.runtime, newMovie.trailer, newMovie.genres_id])
         .then((result) => {
             console.log('successful post to DB', result);
             res.sendStatus(200)

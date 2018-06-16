@@ -19,6 +19,8 @@ movieApp.service('service', function ($http) {
 
     vm.addMovie = function () {
         vm.objectToSend;
+        console.log(vm.objectToSend);
+        
         return $http({
             method: 'POST',
             url: '/collection',
@@ -26,7 +28,7 @@ movieApp.service('service', function ($http) {
         }).then(function (response) {
             console.log('object POSTED to DB from service');
         }).catch(function (error) {
-            console.log('Error posting object');
+            console.log('Error posting object', error);
         })
     }
 
