@@ -1,0 +1,11 @@
+.home{
+    background-color: burlywood;
+}
+
+/* md-card {
+    min-width: px;
+  } */
+  
+  div[layout="row"] {
+    overflow: auto;
+  }
