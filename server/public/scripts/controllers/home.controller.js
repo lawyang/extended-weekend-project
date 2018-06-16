@@ -1,15 +1,18 @@
 movieApp.controller('HomeController', function (service) {
     const vm = this;
     vm.test = 'test';
-    vm.displayArray = [];
     vm.service = service;
-
-    vm.genre = [
-        'this', 'two'
-    ];
-
+    vm.displayArray = [];
+    vm.genreArray = [];
     vm.inputGenre = vm.genreOption;
-    console.log(vm.inputGenre);
+
+
+
+    vm.service.getGenres()
+        .then(function (response) {
+            vm.genreArray = response;
+            console.log(vm.genreArray);
+        })
 
     vm.getAll = function () {
         vm.service.getCollection()
@@ -19,21 +22,27 @@ movieApp.controller('HomeController', function (service) {
             });
     }
 
-    vm.submitButton = function(){
+    vm.submitButton = function () {
         console.log(`in submit button`);
         vm.sendToDb = {
             title: vm.title,
             release_date: vm.myDate,
             runtime: vm.time,
-            trailer: vm.trailer
+            trailer: vm.trailer,
+            genre: vm.genreToSend
         }
         console.log(vm.sendToDb);
         service.objectToSend = vm.sendToDb;
         service.addMovie()
     }
 
-    //GET GENRE
+
     //display genre to add to movie
     // DELETE ON CASCADE
     vm.getAll();
+
+
+
+
+
 })

@@ -3,15 +3,14 @@ movieApp.service('service', function ($http) {
 
     vm.testservice = 'asdfasdf';
     vm.toArray = [];
+    vm.genreArray = [];
 
     vm.getCollection = function () {
         return $http({
             method: 'GET',
             url: '/collection'
         }).then(function (response) {
-            console.log('handled getCollection for /collection');
             vm.toArray = response.data;
-            console.log('vm.array:', vm.toArray);
             return response;
         }).catch(function (error) {
             console.log('Error handling getCollection for /collection', error);
@@ -34,8 +33,13 @@ movieApp.service('service', function ($http) {
     vm.getGenres = function () {
         return $http({
             method: 'GET',
-            url: '/collection/genre'
+            url: '/collection/genres'
+        }).then(function(response){
+            vm.genreArray = response.data;
+            return vm.genreArray;
+        }).catch(function(error){
+            console.log('Error handling getGenres for /collection/genre', error);
         })
-    }
+    }        
 
 })

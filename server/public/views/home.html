@@ -13,8 +13,8 @@
     <md-input-container>
         <label>Genre</label>
         <md-select ng-model="vm.genreToSend">
-            <md-option ng-repeat="genre in vm.genre" ng-value="{{genre}}">
-                {{genre}}
+            <md-option ng-repeat="genre in vm.genreArray" ng-value="{{genre.id}}">
+                {{genre.genre}}
             </md-option>
         </md-select>
     </md-input-container>
