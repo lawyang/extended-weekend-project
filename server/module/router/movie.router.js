@@ -18,6 +18,21 @@ router.get('/', (req, res) => {
         })
 }) // end GET call
 
+// GET call for genres
+router.get('/genres', (req, res) => {
+    console.log(`GET GENRE request to DB from movie.router`);
+    const queryText = "select * from genres"
+    pool.query(queryText)
+        .then((result) => {
+            console.log('back from the GET CALL with:', result.data);
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log('ERROR handling GET call', error);
+            res.sendStatus(500);
+        })
+}) // end GET call
+
 //POST to DB
 router.post('/', (req, res) => {
     let newMovie = req.body;

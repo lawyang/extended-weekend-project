@@ -18,16 +18,23 @@ movieApp.service('service', function ($http) {
         })
     }
 
-    vm.addMovie = function(){
+    vm.addMovie = function () {
         vm.objectToSend;
         return $http({
             method: 'POST',
             url: '/collection',
             data: vm.objectToSend
-        }).then(function(response){
+        }).then(function (response) {
             console.log('object POSTED to DB from service');
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log('Error posting object');
+        })
+    }
+
+    vm.getGenres = function () {
+        return $http({
+            method: 'GET',
+            url: '/collection/genre'
         })
     }
 
