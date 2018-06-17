@@ -18,21 +18,6 @@ router.get('/', (req, res) => {
         })
 }) // end GET call
 
-// GET call for genres
-router.get('/genres', (req, res) => {
-    console.log(`GET GENRE request to DB from movie.router`);
-    const queryText = "select * from genres"
-    pool.query(queryText)
-        .then((result) => {
-            console.log('back from the GET CALL with:', result.data);
-            res.send(result.rows);
-        })
-        .catch((error) => {
-            console.log('ERROR handling GET call', error);
-            res.sendStatus(500);
-        })
-}) // end GET call
-
 //POST to DB
 router.post('/', (req, res) => {
     console.log('in post router:', req.body);
@@ -50,5 +35,38 @@ router.post('/', (req, res) => {
         })
 })
 
+// GET call for genres
+router.get('/genres', (req, res) => {
+    console.log(`GET GENRE request to DB from movie.router`);
+    const queryText = "select * from genres"
+    pool.query(queryText)
+        .then((result) => {
+            console.log('back from the GET CALL with:', result.data);
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log('ERROR handling GET call', error);
+            res.sendStatus(500);
+        })
+}) // end GET call
+
+//POST call for genres
+router.post('/genres', (req, res) => {
+    console.log('inside genre post router', req.body);
+    let newGenre = req.body;
+    let queryPost = "INSERT INTO genres (genre) VALUES ($1)";
+    pool.query(queryPost, [newGenre.genre])
+        .then((result) => {
+            console.log('successful post into genres table', result);
+            res.sendStatus(200);
+        })
+        .catch((error)=>{
+            console.log('error posting to genres table');
+            res.sendStatus(500);
+        })
+
+
+
+})
 
 module.exports = router;

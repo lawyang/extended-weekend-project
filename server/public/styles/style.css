@@ -1,11 +1,35 @@
-.home{
-    background-color: burlywood;
+body{
+  background-color: beige
 }
 
-/* md-card {
-    min-width: px;
-  } */
+md-card:parent > :hover{
+  position: relative; 
+  top: -5px;;
+  }
   
   div[layout="row"] {
     overflow: auto;
   }
+
+  #navbar{
+    background-color: #81B29A;
+    color: aliceblue
+  }
+
+#cardStyles{
+  background-color: #3D405B;
+  }
+
+md-card{
+  min-width: 400px;
+}
+
+#inputs{
+  background-color: beige;
+  width: 600px
+}
+
+md-card-title-text{
+  font-size: 30px;
+  font-weight: bold
+}
