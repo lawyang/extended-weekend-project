@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 //POST to DB
 router.post('/', (req, res) => {
     console.log('in post router:', req.body);
-    
+
     let newMovie = req.body;
     let queryPost = "INSERT INTO movies (title, release_date, runtime, trailer, genres_id) VALUES ($1, $2, $3, $4, $5)";
     pool.query(queryPost, [newMovie.title, newMovie.release_date, newMovie.runtime, newMovie.trailer, newMovie.genres_id])
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
             console.log('successful post to DB', result);
             res.sendStatus(200)
         })
-        .catch((error) =>{
+        .catch((error) => {
             console.log('Error posting to DB', error);
             res.sendStatus(500)
         })
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 // GET call for genres
 router.get('/genres', (req, res) => {
     console.log(`GET GENRE request to DB from movie.router`);
-    const queryText = "select * from genres"
+    const queryText = "select * from genres";
     pool.query(queryText)
         .then((result) => {
             console.log('back from the GET CALL with:', result.data);
@@ -60,13 +60,24 @@ router.post('/genres', (req, res) => {
             console.log('successful post into genres table', result);
             res.sendStatus(200);
         })
-        .catch((error)=>{
+        .catch((error) => {
             console.log('error posting to genres table');
             res.sendStatus(500);
         })
-
-
-
 })
+
+router.get('/count', (req, res) => {
+    console.log('inside genre count get');
+    const genreQuery = "select count(genres_id), genres.genre, array_agg(movies.title) from genres left join movies on genres_id = genres.id group by genres.genre";
+    pool.query(genreQuery)
+        .then((result) => {
+            console.log('bakc from GET call for COUNT');
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('ERROR handling GET COUNT call', error);
+            res.sendStatus(500);
+        })
+})
+
 
 module.exports = router;

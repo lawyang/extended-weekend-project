@@ -1,2 +1,33 @@
 <h1>Genre -> GC</h1>
 <p>{{GC.test}}</p>
+
+
+<md-input-container>
+    <label>Genre</label>
+    <input ng-model="GC.genre">
+</md-input-container>
+<md-input-container>
+    <md-button md-no-ink class="md-raised md-primary" ng-click="vm.submitButton()">Submit</md-button>
+</md-input-container>
+
+<div ng-cloak id="cardStyles">
+    <div layout="row">
+        <md-card ng-repeat="genre in GC.displayArray" layout-margin>
+            <md-card-title>
+                <md-card-title-text>
+                    <span>
+                        <p>{{genre.genre}}</p>
+                        <p>In Collection: {{genre.count}}</p>
+                        <p>{{genre.array_agg}}</p>
+                    </span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                        
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-button" ng-model="deleteButton">Delete</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

@@ -57,5 +57,18 @@ movieApp.service('service', function ($http) {
             console.log('Error posting object to genre table', error); 
         })
     }
-    
+
+    vm.getCount = function () {
+        return $http({
+            method: 'GET',
+            url: 'collection/count'
+        }).then(function(response){
+            vm.countArray = response.data;
+            console.log(vm.countArray);
+            return vm.countArray;  
+        }).catch(function(error){
+            console.log('Error handling getGenres for /collection/genre', error);
+        })
+    }
+
 })
