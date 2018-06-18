@@ -21,7 +21,7 @@
                 <tr ng-repeat="genre in GC.displayArray | orderBy:'count' ">
                     <td>{{ genre.genre }}</td>
                     <td>{{ genre.count }}</td>
-                    <td>{{ genre.array_agg }}</td>
+                    <td> <span ng-repeat="movie in genre.array_agg">{{movie}} - </span> </td>
                     <td>         <md-button md-no-ink class="md-raised md-primary" ng-click="GC.deleteButton()">Delete</md-button>
                     </td>
                 </tr>
