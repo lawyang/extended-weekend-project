@@ -10,5 +10,14 @@ service.getCount()
     console.log(vm.displayArray);
 })
 
+vm.submitButton = function () {
+    console.log('in submit button');
+    vm.genreToSend = {
+        genre: vm.genre
+    }
+    console.log(vm.genreToSend);
+    service.genreSubmit = vm.genreToSend;
+    service.addGenre()
+}
 
 })

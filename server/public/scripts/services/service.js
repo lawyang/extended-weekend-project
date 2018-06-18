@@ -45,12 +45,12 @@ movieApp.service('service', function ($http) {
     }        
 
     vm.addGenre = function () {
-        vm.genreToSend;
-        console.log(vm.genreToSend);
+        vm.genreSubmit;
+        console.log(vm.genreSubmit);
         return $http({
             method: 'POST',
-            url: '/collection/genre',
-            data: vm.genreToSend
+            url: '/collection/genres',
+            data: vm.genreSubmit
         }).then(function(response){
             console.log('succesful POST to genre table')
         }).catch(function(error){
