@@ -6,7 +6,7 @@ const pool = require('../pool/movie.pool');
 // GET call to DB
 router.get('/', (req, res) => {
     console.log(`in GET request to DB from movie.router`);
-    const queryText = "select * from movies join genres on genres_id = genres.id"
+    const queryText = "select movies.id, movies.title, movies.release_date, movies.trailer, movies.runtime, movies.genres_id from movies join genres on genres_id = genres.id";
     pool.query(queryText)
         .then((result) => {
             console.log('back from the GET CALL with:', result.data);

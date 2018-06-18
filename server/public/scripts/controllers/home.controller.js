@@ -39,6 +39,7 @@ movieApp.controller('HomeController', function (service) {
         service.delete(id)
             .then(function(response){
                 vm.getAll();
+                console.log(id);
             })
     }
 
