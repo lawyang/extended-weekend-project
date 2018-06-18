@@ -6,16 +6,14 @@ movieApp.controller('HomeController', function (service) {
     vm.genreArray = [];
     vm.inputGenre = vm.genreOption;
 
-
-
     vm.service.getGenres()
         .then(function (response) {
             vm.genreArray = response;
             console.log(vm.genreArray);
-        })
+    })
 
     vm.getAll = function () {
-        vm.service.getCollection()
+        service.getCollection()
             .then(function (response) {
                 vm.displayArray = response.data;
                 console.log(vm.displayArray)
@@ -31,18 +29,26 @@ movieApp.controller('HomeController', function (service) {
             trailer: vm.trailer,
             genres_id: vm.genreToSend
         }
-        console.log(vm.sendToDb);
         service.objectToSend = vm.sendToDb;
-        service.addMovie()
+        service.addMovie();
+        vm.clearInputs();
+        vm.getAll();
     }
 
+    vm.deleteButton = function(id) {
+        service.delete(id)
+            .then(function(response){
+                vm.getAll();
+            })
+    }
 
-    //display genre to add to movie
-    // DELETE ON CASCADE
+    vm.clearInputs = function() {
+        vm.title='';
+        vm.myDate = '';
+        vm.time = '';
+        vm.trailer = '';
+        vm.genreToSend = '';
+    }
+
     vm.getAll();
-
-
-
-
-
 })

@@ -1,33 +1,31 @@
-<h1>Genre -> GC</h1>
-<p>{{GC.test}}</p>
+<section id="genre">
+    <md-input-container>
+        <label>Add a Genre</label>
+        <input ng-model="GC.genre">
+    </md-input-container>
+    <md-input-container>
+        <md-button md-no-ink class="md-raised md-primary" ng-click="GC.submitButton()">Submit</md-button>
+    </md-input-container>
 
+    <section>
+        <table>
+            <thead id="theader">
+                <tr>
+                    <td>Genre</td>
+                    <td>count</td>
+                    <td>movies</td>
+                </tr>
 
-<md-input-container>
-    <label>Genre</label>
-    <input ng-model="GC.genre">
-</md-input-container>
-<md-input-container>
-    <md-button md-no-ink class="md-raised md-primary" ng-click="GC.submitButton()">Submit</md-button>
-</md-input-container>
-
-<div ng-cloak id="cardStyles">
-    <div layout="row">
-        <md-card ng-repeat="genre in GC.displayArray" layout-margin>
-            <md-card-title>
-                <md-card-title-text>
-                    <span>
-                        <p>{{genre.genre}}</p>
-                        <p>In Collection: {{genre.count}}</p>
-                        <p>{{genre.array_agg}}</p>
-                    </span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                        
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-button" ng-model="deleteButton">Delete</md-button>
-            </md-card-actions>
-        </md-card>
-    </div>
-</div>
+            </thead>
+            <tbody>
+                <tr ng-repeat="genre in GC.displayArray | orderBy:'count' ">
+                    <td>{{ genre.genre }}</td>
+                    <td>{{ genre.count }}</td>
+                    <td>{{ genre.array_agg }}</td>
+                    <td>         <md-button md-no-ink class="md-raised md-primary" ng-click="GC.deleteButton()">Delete</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</section>

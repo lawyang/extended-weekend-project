@@ -71,4 +71,16 @@ movieApp.service('service', function ($http) {
         })
     }
 
+    vm.delete = function( id ) {
+        return $http({
+            method: 'DELETE',
+            url: `/collection/${id}`
+        }).then( function(response){
+            console.log(`Handled DELETE record`);
+        }).catch(function( error ){
+            console.log(`Error DELETE: ${error}`);
+        })
+    }
+
+
 })

@@ -1,5 +1,5 @@
 body{
-  background-color: beige
+  background-color: beige;
 }
 
 md-card:parent > :hover{
@@ -12,8 +12,8 @@ md-card:parent > :hover{
   }
 
   #navbar{
-    background-color: #81B29A;
-    color: aliceblue
+    background-color: rgb(70, 143, 185);
+    color: rgb(255, 255, 255)
   }
 
 #cardStyles{
@@ -32,4 +32,22 @@ md-card{
 md-card-title-text{
   font-size: 30px;
   font-weight: bold
+}
+
+#theader{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#genre{
+  margin: auto;
+  width: 90%;
+}
+
+table, th , td, tr  {
+  /* border: 1px solid grey; */
+  /* border-collapse: collapse; */
+  /* padding: 5px; */
+  width: 1000px;
+  height: 10px;
 }

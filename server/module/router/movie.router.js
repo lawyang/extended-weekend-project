@@ -80,4 +80,20 @@ router.get('/count', (req, res) => {
 })
 
 
+router.delete('/:id', (req, res) => {
+    console.log(`inside router.delete`);
+    const id = req.params.id;
+    const queryText = 'DELETE FROM movies WHERE id=$1';
+    pool.query(queryText, [id])
+        .then((result) => {
+            console.log(`successful delete of movie ${result}`);
+            res.sendStatus(200)
+        })
+        .catch((error) => {
+            console.log(`Error deleting movie ${error}`);
+            res.sendStatus(500);
+        })
+
+})
+
 module.exports = router;

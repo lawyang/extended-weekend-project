@@ -51,7 +51,7 @@
                     <md-button class="md-primary" ng-href="{{movie.trailer}}" target="_blank">View Trailer</md-button>
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button class="md-button" ng-model="deleteButton">Delete</md-button>
+                    <md-button class="md-button" ng-click="vm.deleteButton(movie.id)">Delete</md-button>
                 </md-card-actions>
             </md-card>
         </div>
