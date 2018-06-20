@@ -4,6 +4,7 @@ movieApp.service('service', function ($http) {
     vm.testservice = 'asdfasdf';
     vm.toArray = [];
     vm.genreArray = [];
+    vm.movieArray = [];
 
     vm.getCollection = function () {
         return $http({
@@ -20,7 +21,6 @@ movieApp.service('service', function ($http) {
     vm.addMovie = function () {
         vm.objectToSend;
         console.log(vm.objectToSend);
-        
         return $http({
             method: 'POST',
             url: '/collection',
@@ -81,6 +81,19 @@ movieApp.service('service', function ($http) {
             console.log(`Error DELETE: ${error}`);
         })
     }
-
+    
+    vm.getOmdb = function(search) {
+        console.log(search);
+        const movieUrl = 'http://www.omdbapi.com/?s=' + search + '&apikey=14063c05';
+        return $http({
+            method: 'GET',
+            url: movieUrl
+        }).then( function(response){
+            console.log('back from GET API', response.data.Search);
+            return response;
+        }).catch( function(error){
+            console.log('Error GET from API');
+        })
+    }
 
 })

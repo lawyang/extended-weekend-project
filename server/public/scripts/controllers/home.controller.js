@@ -4,6 +4,7 @@ movieApp.controller('HomeController', function (service) {
     vm.service = service;
     vm.displayArray = [];
     vm.genreArray = [];
+    vm.movieArray = [];
     vm.inputGenre = vm.genreOption;
 
     vm.service.getGenres()
@@ -50,6 +51,21 @@ movieApp.controller('HomeController', function (service) {
         vm.trailer = '';
         vm.genreToSend = '';
     }
+
+
+    vm.service.omdb = function() {
+        vm.search = {
+            search: vm.search
+        }
+        search = vm.search;
+        vm.movie = [];
+        service.getOmdb(search)
+            .then(function (response){
+                vm.movieArray = response.data.Search;
+                console.log(vm.movieArray);
+            });
+    }
+
 
     vm.getAll();
 })

@@ -1,7 +1,11 @@
 <section class="home">
-    
+    <mn-input-container>
+        <input ng-model="vm.search">
+    </mn-input-container>
     <md-content layout-gt-sm="column" id="inputs">
-            <h1>Add a Movie</h1>
+            
+        <button ng-click="vm.service.omdb()">omdb</button>
+        <h1>Add a Movie</h1>
             <md-input-container>
                 <label>Movie Title</label>
                 <input ng-model="vm.title">
